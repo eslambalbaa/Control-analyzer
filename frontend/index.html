@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Toolkit</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <h1 class="app-title">Control Toolkit</h1>
+      <p class="subtitle">Signal flow graphs and Routh stability</p>
+
+      <nav class="nav-list" aria-label="Mode selector">
+        <button type="button" class="nav-item active" data-mode="sfg">Signal Flow Graph</button>
+        <button type="button" class="nav-item" data-mode="routh">Routh Stability</button>
+      </nav>
+
+      <hr class="divider">
+
+      <section id="sfg-inputs" class="input-panel">
+        <div class="sidebar-label">EXAMPLES</div>
+        <div id="sfg-presets" class="chip-wrap"></div>
+
+        <div class="sidebar-label">NODES</div>
+        <div class="node-controls">
+          <input id="sfg-node-count" class="pill-input num-input" type="number" min="2" max="20" value="6" aria-label="Node count">
+          <span class="inline-label">Input</span>
+          <select id="sfg-source" class="pill-select" aria-label="Input node"></select>
+          <span class="inline-label">Output</span>
+          <select id="sfg-sink" class="pill-select" aria-label="Output node"></select>
+        </div>
+
+        <div class="sidebar-label">BRANCHES (FROM, TO, GAIN)</div>
+        <div id="sfg-branches" class="branch-list"></div>
+
+        <button type="button" id="sfg-add-branch" class="chip-btn">Add branch</button>
+        <button type="button" id="sfg-analyze" class="analyze-btn">Analyze</button>
+      </section>
+
+      <section id="routh-inputs" class="input-panel hidden">
+        <div class="sidebar-label">CHARACTERISTIC EQUATION</div>
+        <input id="routh-equation" class="pill-input full-width" type="text" aria-label="Characteristic equation">
+        <p class="helper-text">Type terms such as 3s^2 or a list of coefficients such as 1 1 10 72 152 240.</p>
+
+        <button type="button" id="routh-analyze" class="analyze-btn">Analyze</button>
+
+        <div class="sidebar-label">EXAMPLES</div>
+        <div id="routh-presets" class="chip-wrap"></div>
+      </section>
+    </aside>
+
+    <main class="results-pane">
+      <div id="results-content" class="results-content"></div>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
